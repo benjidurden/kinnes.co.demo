@@ -1,0 +1,60 @@
+body {
+    font-family: "Helvetica";
+}
+/* Overriding the default styling for the blog link */
+.link {
+    color: black;
+    text-decoration: none;
+}
+.link:visited {
+    color: black;
+    text-decoration: none;
+}
+/* Overriding default styling for the Photo and Film categories */
+.catalog:hover {
+    cursor: pointer;
+}
+/* Hiding the content within the photo and video div's. This will be overrided by an onClick function with React */
+.closed {
+    display: none;
+}
+
+.prints {
+    width: 35%;
+    height: 35%;
+}
+
+.shirt-pic {
+    width: 50%;
+    height: 50%;
+}
+
+.itemHeader {
+    text-align: center;
+}
+
+#storeFront {
+    text-align: center;
+}
+
+p {
+    font-size: 16px;
+    line-height: 23px;
+}
+
+.storeLink {
+    text-decoration: none;
+    color: black;
+}
+
+.storeLink:visited {
+    color: black;
+}
+
+.invisible {
+    display: none;
+}
+
+.portfolioItem {
+    cursor: pointer;
+}

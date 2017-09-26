@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import './App.css';
 import Home from './Home.js';
-import Thoughts from './Thoughts.js';
-import Works from './Works.js';
-import Contact from './Contact.js';
+import Photo from './Photo.js';
+import Film from './Film.js';
+import Store from './Store.js';
 
 class App extends Component {
   render() {
@@ -14,9 +13,9 @@ class App extends Component {
       <div>
       <Switch>
         <Route exact path = '/' component = {Home} />
-        <Route exact path = '/works/' component = {Works} />
-        <Route exact path = '/thoughts/' component = {Thoughts} />
-        <Route exact path = '/contact/' component = {Contact} />
+        <Route exact path = '/photo/' component = {Photo} />
+        <Route exact path = '/film/' component = {Film} />
+        <Route exact path = '/store/' component = {Store} />
       </Switch>
       </div>
       </Router>

@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 
-class Contact extends Component {
+class Film extends Component {
     render(){
         return (
             <div>
-            <h1>Contact page!</h1>
+            <h1>Movie wow 3d wow real</h1>
             </div>
         )
     }
 }
 
-export default Contact;
+export default Film;
