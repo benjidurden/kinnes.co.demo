@@ -57,4 +57,19 @@ p {
 
 .portfolioItem {
     cursor: pointer;
+    color: darkgray;
+    text-decoration-style: none;
+}
+
+.removeStyling {
+    text-decoration: none;
+    transition: color 0.3s ease;
+    color: #cccccc;
+}
+.removeStyling:hover{
+    color: black;
+}
+
+.portfolioItem:hover{
+    color: black;
 }
