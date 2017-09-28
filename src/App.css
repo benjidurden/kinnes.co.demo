@@ -1,3 +1,8 @@
+@import '~antd/dist/antd.css';
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:600,600i');
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+
 body {
     font-family: "Helvetica";
 }
@@ -31,10 +36,15 @@ body {
 
 .itemHeader {
     text-align: center;
+    font-family: 'Raleway', sans-serif;
+    font-size: 27px;
 }
 
 #storeFront {
     text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 42px;
 }
 
 p {

@@ -8,6 +8,8 @@ import Film from './Film.js';
 import FilmFinal from './FilmFinal.js';
 import Store from './Store.js';
 import ShoppingCart from './ShoppingCart.js';
+import StoreBKShirt from './StoreBKShirt.js';
+import StoreBKPrints from './StoreBKPrints.js';
 
 class App extends Component {
   render() {
@@ -28,6 +30,8 @@ class App extends Component {
         <Route path = '/photo/' component = {Photo} />
         <Route exact path = '/film/' component = {Film} />
         <Route exact path = '/store/' component = {Store} />
+        <Route exact path = '/store/prints/' component = {StoreBKPrints} />
+        <Route exact path = '/store/support-bk-shirt/' component = {StoreBKShirt} />
       </Switch>
       </div>
       </Router>

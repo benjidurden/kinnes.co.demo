@@ -38,6 +38,7 @@ class Home extends Component {
             <h3><a className="link" href="http://blog.briankinn.es">Blog</a></h3>
             <h3><Link className="storeLink" to="/store/">Store</Link></h3>
             <h3><a className="link" href="mailto:contact@briankinn.es">Contact</a></h3>
+            {}
             </div>
         )
     }
