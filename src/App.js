@@ -22,10 +22,10 @@ class App extends Component {
         {/*RedMercedes and Heebiejeebies will render the photo component. The rest will render the video component.*/}
         {/* Assign a key later on */}
         {["/redmercedes/", "/heebiejeebies/"].map(photos => 
-        <Route path={photos} component={PhotoFinal} key = {photos}/>
+        <Route path={photos} component={Home} key = {photos}/>
         )}
         {["/caroline/", "/myneighbor/", "/wendy/", "/american-boyband/", "/helmet-boy/", "/beauty-salon/"].map(films => 
-          <Route path={films} component = {FilmFinal} key={films}/>
+          <Route path={films} component = {Home} key={films}/>
         )}
         <Route path = '/photo/' component = {Photo} />
         <Route exact path = '/film/' component = {Film} />
