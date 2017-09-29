@@ -25,8 +25,8 @@ body {
 }
 
 .prints {
-    width: 35%;
-    height: 35%;
+    width: 25%;
+    height: 25%;
 }
 
 .shirt-pic {
@@ -40,7 +40,7 @@ body {
     font-size: 27px;
 }
 
-#storeFront {
+.storeHead {
     text-align: center;
     font-family: 'Open Sans', sans-serif;
     font-weight: 600;
@@ -82,4 +82,28 @@ p {
 
 .portfolioItem:hover{
     color: black;
+}
+
+.itemContainer {
+    display: inline;
+}
+
+#spacing {
+    display: inline;
+    padding: 32px;
+    margin: auto;
+}
+
+#allItemWrapper {
+    margin: 50px;
+}
+
+/* CSS Transition for the Hover effect over the menu Items. First thing that you should do is attempt to overlay the text on the image. */
+
+.textWrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
 }
