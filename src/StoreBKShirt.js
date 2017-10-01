@@ -9,11 +9,28 @@ class StoreBKShirt extends Component {
         return (
             <div>
             <h1 className="storeFront"><i><Link to = "/store/">Store</Link></i></h1>
+            <div>
+            <Link to = "/store/cart/">
+            <FaShoppingCart onHover = {this.pushCart} size={31}/>
+            </Link>
+            </div>
                 {/* Show current Breadcrumb? */}
             <Breadcrumb>
-            <Breadcrumb.Item><b>Home</b></Breadcrumb.Item>
-            <Breadcrumb.Item><b>Store</b></Breadcrumb.Item>
-            <Breadcrumb.Item><b>Support Brian Kinnes Shirt</b></Breadcrumb.Item>
+            <Breadcrumb.Item><b>
+            <Link to = "/">
+                Home
+            </Link>
+            </b></Breadcrumb.Item>
+            <Breadcrumb.Item><b>
+            <Link to = '/store/'>
+                Store
+            </Link>
+            </b></Breadcrumb.Item>
+            <Breadcrumb.Item><b>
+            <Link to = "/store/support-bk-shirt/">   
+            Support Brian Kinnes Shirt
+            </Link>
+            </b></Breadcrumb.Item>
             </Breadcrumb>
             <h3 className="itemHeader">Support Brian Kinnes Shirt</h3>
              <img className="shirt-pic" src="https://res.cloudinary.com/benjidurden/image/upload/v1505946146/shirt_v4_dichtv.png" alt="Support Brian Kinnes" />

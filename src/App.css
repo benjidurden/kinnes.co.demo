@@ -101,9 +101,78 @@ p {
 /* CSS Transition for the Hover effect over the menu Items. First thing that you should do is attempt to overlay the text on the image. */
 
 .textWrapper {
-    position: absolute;
+    display: none;
+}
+
+.itemContainer:hover .textWrapper{
+    display: block;
+}
+
+.textWrapper {
     top: 0;
     left: 0;
     bottom: 0;
     right: 0;
+}
+
+.text {
+    display: inline;
+}
+
+/* Mainpage Container */
+
+
+.title {
+    display: inline-block;
+}
+
+/* Kinnes Photography CSS */
+.photoTitle {
+    text-align: right;
+}
+
+.photoDescription {
+    text-align: right;
+}
+
+/* Photo CSS when the Photo rollout is closed */
+/* .currentPhoto {
+    position: relative;
+    display: block;
+    margin: 0 auto;
+    width: 40%;
+    height: 40%;
+    bottom: 100px;
+} */
+
+.currentPhoto {
+    position: relative;
+    display: block;
+    margin: 0 auto;
+    width: 40%;
+    height: 40%;
+    bottom: 100px;
+}
+
+/* Photo CSS When the Photo rollout is open */
+.fixCurrentPhoto {
+    position: relative;
+    display: block;
+    margin: 0 auto;
+    width: 40%;
+    height: 40%;
+    bottom: 230px;
+}
+
+/* Kinnes Film CSS */
+
+ul, li, h3 {
+    display: table-row-group;
+}
+
+.currentVideo {
+    position: relative;
+    display: block;
+    margin: 0 auto;
+    bottom: 100px;
 }

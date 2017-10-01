@@ -10,6 +10,7 @@ import Store from './Store.js';
 import ShoppingCart from './ShoppingCart.js';
 import StoreBKShirt from './StoreBKShirt.js';
 import StoreBKPrints from './StoreBKPrints.js';
+import HomeDemo from './HomeDemo.js';
 
 class App extends Component {
   render() {
@@ -33,6 +34,7 @@ class App extends Component {
         <Route exact path = '/store/prints/' component = {StoreBKPrints} />
         <Route exact path = '/store/support-bk-shirt/' component = {StoreBKShirt} />
         <Route exact path = '/store/cart/' component = {ShoppingCart} />
+        <Route exact path = '/homedemo/' component = {HomeDemo} />
       </Switch>
       </div>
       </Router>
