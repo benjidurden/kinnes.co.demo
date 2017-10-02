@@ -123,16 +123,7 @@ p {
 
 
 .title {
-    display: inline-block;
-}
-
-/* Kinnes Photography CSS */
-.photoTitle {
-    text-align: right;
-}
-
-.photoDescription {
-    text-align: right;
+    text-align: center;
 }
 
 /* Photo CSS when the Photo rollout is closed */
@@ -151,7 +142,7 @@ p {
     margin: 0 auto;
     width: 40%;
     height: 40%;
-    bottom: 100px;
+    bottom: 75px;
 }
 
 /* Photo CSS When the Photo rollout is open */
@@ -174,5 +165,30 @@ ul, li, h3 {
     position: relative;
     display: block;
     margin: 0 auto;
-    bottom: 100px;
+    bottom: 72px;
+}
+
+.filmTitle, .filmType, .productionRole {
+    position: relative;
+    display: block;
+    top: -60px;
+    left: 218px;
+}
+
+/* KinnesSite Bio */
+.kinnesBio {
+    text-align: center;
+    color: black;
+    position: relative;
+    display: block;
+    margin: 0 auto;
+    bottom: -110px;
+}
+
+/* Kinnes Photography CSS */
+.photoTitle, .photoDescription {
+    position: relative;
+    display: block;
+    top: -60px;
+    left: 345px;
 }

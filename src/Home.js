@@ -58,6 +58,8 @@ const filmMenu = (
 class Home extends Component {
     render(){          
         //Conditional Rendering. Choosing what info the component renders - based on what URL it is served.
+        //Default URL served
+        var kinnesBio = null;
         //Setting the null values
         //Photography Nulls
         var currentPhoto = null;
@@ -78,47 +80,48 @@ class Home extends Component {
             break;
         case "/heebiejeebies/":
             photoTitle = <h4 className = "photoTitle">AMINÉ FEAT. KEHLANI - HEEBIEJEEBIES</h4>; 
-            photoDescription = <h4>SINGLE</h4>;
+            photoDescription = <h4 className = "photoDescription">SINGLE</h4>;
             // currentPhoto = <img src="https://res.cloudinary.com/benjidurden/image/upload/v1506458549/akeemofzamunda-amine-kehlani-heebiejeebies-0_rzl3bz.jpg" className= {this.state.closedPhoto && this.state.closedFilm ? "currentPhoto" : "fixCurrentPhoto"} alt="HeebieJeebies Cover"/>;
             currentPhoto = <img src="https://res.cloudinary.com/benjidurden/image/upload/v1506458549/akeemofzamunda-amine-kehlani-heebiejeebies-0_rzl3bz.jpg" className="currentPhoto" alt="HeebieJeebies Cover"/>;
             break;
         case "/caroline/":
             filmTitle = <h4 className = "filmTitle">AMINÉ - CAROLINE</h4>;
-            filmType = <p className = "filmType">MUSIC VIDEO</p>;
+            filmType = <h4 className = "filmType">MUSIC VIDEO</h4>;
             currentVideo = <iframe className = "currentVideo" width="730" height="450" src="https://www.youtube.com/embed/3j8ecF8Wt4E?rel=0" frameBorder="0" title="caroline" allowFullScreen></iframe>;
-            productionRole = <p className = "productionRole">CREATIVE DIRECTION & WRITING: BRIAN KINNES</p>
+            productionRole = <h4 className = "productionRole">CREATIVE DIRECTION & WRITING</h4>
             break;
         case "/myneighbor/":
             filmTitle = <h4 className = "filmTitle">BEAGLES - MY NEIGHBOR IS A DRUG DEALER</h4>;
-            filmType = <p className = "filmType">MUSIC VIDEO</p>
+            filmType = <h4 className = "filmType">MUSIC VIDEO</h4>
             currentVideo = <iframe className = "currentVideo" width="730" height="450" src="https://www.youtube.com/embed/j3PqNsHPvQg?rel=0" frameBorder="0" allowFullScreen title="beagles"></iframe>;
-            productionRole = <p className = "productionRole">DIRECTOR & DIRECTOR OF PHOTOGRAPHY: BRIAN KINNES</p>
+            productionRole = <h4 className = "productionRole">DIRECTOR & DIRECTOR OF PHOTOGRAPHY</h4>
             break;
         case "/wendy/":
             filmTitle = <h4 className = "filmTitle">RICHIE WOODS - WENDY</h4>;
-            filmType = <p className = "filmType">MUSIC VIDEO</p>
+            filmType = <h4 className = "filmType">MUSIC VIDEO</h4>
             currentVideo = <iframe className = "currentVideo" width="730" height="450" src="https://www.youtube.com/embed/CMNa2xlG3GQ?rel=0" frameBorder="0" allowFullScreen title="wendy"></iframe>;
-            productionRole = <p className = "productionRole">DIRECTOR & DIRECTOR OF PHOTOGRAPHY: BRIAN KINNES</p>;
+            productionRole = <h4 className = "productionRole">DIRECTOR & DIRECTOR OF PHOTOGRAPHY</h4>;
             break;
         case "/american-boyband/":
             filmTitle = <h4 className = "filmTitle">AMERICAN BOYBAND with Kevin Abstract</h4>;
-            filmType = <p className = "filmType">VICELAND Series</p>;
+            filmType = <h4 className = "filmType">VICELAND Series</h4>;
             currentVideo = <iframe className = "currentVideo" width="730" height="450" src="https://www.youtube.com/embed/DBDhBeG1tJY?rel=0" frameBorder="0" title="american-boyband" allowFullScreen></iframe>
-            productionRole = <p className = "productionRole">CAST & ADDITIONAL PHOTOGRAPHY: BRIAN KINNES</p>
+            productionRole = <h4 className = "productionRole">CAST & ADDITIONAL PHOTOGRAPHY</h4>
             break;
         case "/helmet-boy/":
             filmTitle = <h4 className = "filmTitle">HELMET BOY EPISODE 4</h4>;
-            filmType = <p className = "filmType">MINI-SERIES</p>;
+            filmType = <h4 className = "filmType">MINI-SERIES</h4>;
             currentVideo = <iframe className = "currentVideo" width="730" height="450" src="https://www.youtube.com/embed/YyPxFav9Tg8?rel=0" frameBorder="0" title="helmet_boy" allowFullScreen></iframe>;
-            productionRole = <p className = "productionRole">DIRECTOR: BRIAN KINNES</p>
+            productionRole = <h4 className = "productionRole">DIRECTOR</h4>
             break;
         case "/beauty-salon/":
             filmTitle = <h4 className = "filmTitle">FOX ACADEMY - BEAUTY SALON</h4>;
-            filmType = <p className = "filmType">MUSIC VIDEO</p>;
+            filmType = <h4 className = "filmType">MUSIC VIDEO</h4>;
             currentVideo = <iframe className = "currentVideo" width="730" height="450" src="https://www.youtube.com/embed/FVW3XfDmcsw?rel=0" frameBorder="0" allowFullScreen title="beauty_salon"></iframe>
-            productionRole = <p className = "productionRole">DIRECTOR & DIRECTOR OF PHOTOGRAPHY: BRIAN KINNES</p>
+            productionRole = <h4 className = "productionRole">DIRECTOR & DIRECTOR OF PHOTOGRAPHY</h4>
             break;
         default:
+            kinnesBio = <p className = "kinnesBio"><b>A 21 year old American visual artist and writer based in Portland, Oregon.</b></p>
             break;
         }   
         return (
@@ -148,6 +151,8 @@ class Home extends Component {
                <li><a className="link" href="mailto:contact@briankinn.es">Contact</a></li>
             </ul>
             </div>
+            {/* Default Kinnes Bio */}
+            {kinnesBio}
             {/* Photography Section Info */}
             {currentPhoto}
             {photoTitle}
