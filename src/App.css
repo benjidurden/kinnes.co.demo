@@ -41,6 +41,7 @@ body {
 }
 
 .storeHead {
+    position: relative;
     text-align: center;
     font-family: 'Open Sans', sans-serif;
     font-weight: 600;
@@ -101,11 +102,11 @@ p {
 /* CSS Transition for the Hover effect over the menu Items. First thing that you should do is attempt to overlay the text on the image. */
 
 .textWrapper {
-    display: none;
+    visibility: hidden;
 }
 
 .itemContainer:hover .textWrapper{
-    display: block;
+    visibility: visible;
 }
 
 .textWrapper {
@@ -191,4 +192,14 @@ ul, li, h3 {
     display: block;
     top: -60px;
     left: 345px;
+}
+
+/* Shopping Cart Icon */
+
+.storeItemTitle {
+    display: none;
+}
+
+.prints:hover .storeItemTitle {
+    display: block;
 }
