@@ -203,3 +203,20 @@ ul, li, h3 {
 .prints:hover .storeItemTitle {
     display: block;
 }
+
+/* Fade Transition */
+
+
+[class^=imghvr-] figcaption {
+    background-color: #ffffff;
+    color: black;
+    max-width: 25%;
+}
+
+[class*=' imghvr-'], [class^=imghvr-] {
+    background-color: transparent;
+}
+
+.printLink {
+    width: 25%;
+}

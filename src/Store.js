@@ -23,6 +23,13 @@ class Store extends Component {
              Support Brian Kinnes Shirt
              </Link>
              </div>
+            <figure className="imghvr-fade">
+              <img className="prints" src="https://res.cloudinary.com/benjidurden/image/upload/v1505945857/DJkqrrPVwAAtDzm_vlsgbf.jpg" alt="Prints" />
+              <figcaption>
+              Photo Prints
+              </figcaption>
+              <Link className = "printLink" to = "/store/prints"></Link>
+            </figure>
             </div>
         )
     }
