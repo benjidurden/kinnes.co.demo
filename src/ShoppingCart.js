@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 import {Table, Icon, InputNumber, Button} from 'antd';
+import FaShoppingCart from "react-icons/lib/fa/shopping-cart/";
 const size = "large";
 
 class ShoppingCart extends Component {
@@ -12,7 +14,6 @@ class ShoppingCart extends Component {
     }
     render(){
     //If the cart is empty, render this view
-
     //First column will be the respective image of the item
     const columns = [
     {
@@ -72,7 +73,10 @@ class ShoppingCart extends Component {
     ];
         return (
             <div>
-                <h1>Shopping Cart!</h1>
+                <h1><Link to = "/">Home</Link></h1>
+                <h1 className="storeHead"><i><Link to = "/store/">Store</Link></i></h1>
+                <FaShoppingCart className = "cartIcon" size={31}/>
+                <h1>Your Cart</h1>
                 <Table columns={columns} dataSource = {data} />
                 <Button size={this.state.size}>Update Cart</Button>
                 <Button size={this.state.size}>Checkout</Button>

@@ -25,13 +25,13 @@ body {
 }
 
 .prints {
-    width: 25%;
-    height: 25%;
+    width: 20%;
+    height: 20%;
 }
 
 .shirt-pic {
-    width: 50%;
-    height: 50%;
+    width: 40%;
+    height: 40%;
 }
 
 .itemHeader {
@@ -86,7 +86,8 @@ p {
 }
 
 .itemContainer {
-    display: inline;
+    position: relative;
+    display: inline-block;
 }
 
 #spacing {
@@ -196,27 +197,57 @@ ul, li, h3 {
 
 /* Shopping Cart Icon */
 
-.storeItemTitle {
-    display: none;
-}
-
-.prints:hover .storeItemTitle {
+.cartIcon {
+    position: relative;
     display: block;
+    float: right;
+    clear: both;
+    top: -50px;
 }
 
-/* Fade Transition */
-
-
-[class^=imghvr-] figcaption {
-    background-color: #ffffff;
+#storeDesc {
+    position: relative;
+    display: inline-block;
     color: black;
-    max-width: 25%;
+    top: 100px;
 }
 
-[class*=' imghvr-'], [class^=imghvr-] {
-    background-color: transparent;
+#storeDesc2 {
+    position: relative;
+    display: inline-block;
+    color: black;
+    top: 100px;
 }
 
-.printLink {
-    width: 25%;
+#container1 {
+    left: 140px;
+    top: 20px;
+}
+
+#container2 {
+    bottom: 250px;
+    left: 600px;
+}
+
+.storeFront {
+    text-align: center;
+}
+
+.printFull {
+    width: 32%;
+    height: 32%;
+}
+
+.shirtFull {
+    width: 30%;
+    height: 30%;
+}
+
+.itemInfo {
+    position: absolute;
+    display: inline-block;
+    bottom: 300px;
+    left: 400px;
+    color: black;
+    font-size: 16px;
 }
