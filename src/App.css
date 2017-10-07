@@ -25,13 +25,14 @@ body {
 }
 
 .prints {
-    width: 20%;
-    height: 20%;
+    width: 30%;
+    height: 30%;
+    margin-left: 12px;
 }
 
 .shirt-pic {
-    width: 40%;
-    height: 40%;
+    width: 30%;
+    height: 30%;
 }
 
 .itemHeader {
@@ -86,9 +87,14 @@ p {
 }
 
 .itemContainer {
-    position: relative;
-    display: inline-block;
+    /* position: relative;
+    display: inline-block; */
+    display: table-row;
+    width: 100%;
+    vertical-align: top;
 }
+
+
 
 #spacing {
     display: inline;
@@ -202,6 +208,18 @@ ul, li, h3 {
     display: block;
     float: right;
     clear: both;
+    top: -95px;
+}
+
+#cartOnStore {
+    top: -70px;
+}
+
+#printCart {
+    top: -50px;
+}
+
+#supportBK {
     top: -50px;
 }
 
@@ -225,8 +243,14 @@ ul, li, h3 {
 }
 
 #container2 {
-    bottom: 250px;
-    left: 600px;
+    /* display: table-cell;
+    vertical-align: top;
+    text-align: right; */
+    position: relative;
+    display: inline-block;
+    margin-left: -80px;
+    top: -365px;
+    right: -670px;
 }
 
 .storeFront {
@@ -250,4 +274,107 @@ ul, li, h3 {
     left: 400px;
     color: black;
     font-size: 16px;
+}
+
+.cartButtons {
+    position: relative;
+    display: inline-block;
+    padding: 5px;
+    clear: both;
+    left: 500px;
+}
+
+.mainContainer {
+    max-width: 1050px;
+    margin: 60px auto;
+}
+
+#subTank {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+img {
+    margin: 5px;
+}
+
+.main {
+    max-width: 100%;
+    height: auto;
+}
+
+.hideModal {
+    display: none;
+}
+
+.cart_row {
+    border-bottom: 1px solid #1c1d1d;
+    padding-bottom: 15px;
+}
+
+.hr--small {
+   margin: 20px auto;
+}
+
+hr, .hr--small {
+    border-width: 3px 0 0 0;
+    width: 50px;
+}
+
+hr {
+    border-top: solid #1c1d1d;
+}
+
+.tableHead {
+    color: #1c1d1d;
+}
+
+#cartIdentifier {
+    text-align: center;
+}
+
+#cartShirt {
+    width: 50%;
+    height: 50%;
+}
+
+#cartPrint {
+    width: 50%;
+    height: 50%;
+}
+
+.shopInput {
+    background: #f6f6f6;
+    color: #1c1d1d;
+    margin: 0 auto;
+    height: 40px;
+    width: 75px;
+    font-size: 26px;
+    text-align: center;
+}
+
+.costContainer {
+    color: #1c1d1d;
+}
+
+.itemTitle {
+    font-weight: 700;
+}
+
+.itemSize, .itemRemover {
+    font-weight: 300;
+}
+
+.itemTitle, .itemSize, .itemRemover {
+    color: #1c1d1d;
+}
+
+.itemRemover {
+    cursor: pointer;
+}
+
+.borderRow {
+    border-top: 1px solid #1c1d1d;
+    padding-top: 18px;
 }

@@ -5,14 +5,14 @@ import {Menu, Dropdown, Icon} from 'antd';
 const photoMenu = (
 <Menu>
     <Menu.Item key = "0">
-    <Link to = "/redmercedes/">
+    <li><Link to = "/redmercedes/">
       Red Mercedes
-    </Link>
+    </Link></li>
    </Menu.Item>
    <Menu.Item key = "1">
-    <Link to = "/heebiejeebies/">
+    <li><Link to = "/heebiejeebies/">
       HeebieJeebies
-    </Link>
+    </Link></li>
    </Menu.Item>
 </Menu>
 );
@@ -132,7 +132,7 @@ class Home extends Component {
                </div>
                 {/* Photography Menu */}
                 <Dropdown overlay = {photoMenu}>
-                <a className = "ant-dropdown-link" href = "#">
+                <a className = "ant-dropdown-link">
                     Photo <Icon type = "down" />
                 </a>
                 </Dropdown>
@@ -140,7 +140,7 @@ class Home extends Component {
                 </div>
                 {/* Film Menu */}
                 <Dropdown overlay = {filmMenu}>
-                <a className = "ant-dropdown-link" href = "#">
+                <a className = "ant-dropdown-link">
                     Film <Icon type = "down" />
                 </a>
                 </Dropdown>

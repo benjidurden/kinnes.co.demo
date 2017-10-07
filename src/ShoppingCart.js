@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import {Table, Icon, InputNumber, Button} from 'antd';
+import {Table, InputNumber, Button} from 'antd';
 import FaShoppingCart from "react-icons/lib/fa/shopping-cart/";
-const size = "large";
 
 class ShoppingCart extends Component {
     //Conditional rendering. If a store item isn't sent to the cart, render a different view
@@ -10,24 +9,28 @@ class ShoppingCart extends Component {
         super(props);
     this.state = {
         size: 'large',
+        wantRemoved: false,
     };
+    this.removeRow = this.removeRow.bind(this);
     }
+
+    removeRow = (key, e) => {
+    const newRow = this.state;
+    this.setState({newRow});
+    console.log("Delete", key);
+    }
+
     render(){
     //If the cart is empty, render this view
     //First column will be the respective image of the item
+    //Add an ID column
     const columns = [
-    {
-        title: '',
-        dataIndex: 'image',
-        key: 'image',
-        render: image => <img src = "#" alt="" />
-    },
     {
         title: 'Product',
         dataIndex: 'product',
         key: 'product',
         //Use props to capture the shirt link or the prints link and send it to the render
-        render: text => <a href ="#">{text}</a>
+        render: text => <a>{text}</a>
     },
     {
         title: 'Price',
@@ -46,7 +49,7 @@ class ShoppingCart extends Component {
         key: 'remove',
         render: text => (
         <span>
-        <Button size={this.state.size}>Remove</Button>
+        <Button size={this.state.size} onClick={this.removeRow}>Remove</Button>
         </span>
         ),
     },

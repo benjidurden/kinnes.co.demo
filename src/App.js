@@ -2,15 +2,14 @@ import React, { Component } from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import './App.css';
 import Home from './Home.js';
-import Photo from './Photo.js';
-import PhotoFinal from './PhotoFinal.js';
-import Film from './Film.js';
-import FilmFinal from './FilmFinal.js';
 import Store from './Store.js';
 import ShoppingCart from './ShoppingCart.js';
 import StoreBKShirt from './StoreBKShirt.js';
 import StoreBKPrints from './StoreBKPrints.js';
-import HomeDemo from './HomeDemo.js';
+import CartExample from './CartExample.js';
+import axios from 'axios';
+import ConfirmPurchase from './ConfirmPurchase.js';
+import NewCart from './NewCart.js';
 
 class App extends Component {
   render() {
@@ -28,13 +27,13 @@ class App extends Component {
         {["/caroline/", "/myneighbor/", "/wendy/", "/american-boyband/", "/helmet-boy/", "/beauty-salon/"].map(films => 
           <Route path={films} component = {Home} key={films}/>
         )}
-        <Route path = '/photo/' component = {Photo} />
-        <Route exact path = '/film/' component = {Film} />
         <Route exact path = '/store/' component = {Store} />
         <Route exact path = '/store/prints/' component = {StoreBKPrints} />
         <Route exact path = '/store/support-bk-shirt/' component = {StoreBKShirt} />
-        <Route exact path = '/store/cart/' component = {ShoppingCart} />
-        <Route exact path = '/homedemo/' component = {HomeDemo} />
+        <Route exact path = '/store/cart/' component = {CartExample} />
+        <Route exact path = "/store/confirm" component = {ConfirmPurchase} />
+        <Route exact path = "/shoppingcart/" component = {ShoppingCart} />
+        <Route exact path = "/newcart/" component={NewCart} />
       </Switch>
       </div>
       </Router>
