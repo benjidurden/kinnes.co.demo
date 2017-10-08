@@ -29,6 +29,8 @@ class NewCart extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.removeItem = this.removeItem.bind(this);
     this.removePrints = this.removePrints.bind(this);
+    this.changePrints = this.changePrints.bind(this);
+    this.changeShirts = this.changeShirts.bind(this);
     this.removeShirts = this.removeShirts.bind(this);
     this.changeCart = this.changeCart.bind(this);
     }
@@ -96,6 +98,25 @@ class NewCart extends Component {
     storage.prints = this.state.value;
     storage.shirts = this.state.value;
     }
+    }
+
+    changePrints = (e, value) => {
+        if (storage.hasPrintsInCart){
+            e.preventDefault();
+            // storage.prints = this.state.value;
+            storage.prints = this.state.value;
+            console.log(storage.prints);
+            this.props.history.push('/store/cart/');
+        }
+    }
+
+    changeShirts = (e, value) => {
+        if(storage.hasShirtInCart){
+         e.preventDefault();
+         storage.shirts = this.state.value;
+         console.log(storage.shirts);
+         this.props.history.push('/store/cart/');
+         }
     }
 
     showModal = () => {
@@ -223,6 +244,7 @@ class NewCart extends Component {
             </div>
             <div className="col-sm-3">
                 <InputNumber min={1} max={10} defaultValue={storage.shirts} onChange={this.handleChange} />
+                <Button size="default" onClick={this.changeShirts}>Update Total</Button>
             </div>
             <div className="col-sm-3">
                 <p className="costContainer"><b><span>$</span>{shirtPrice}
@@ -241,6 +263,7 @@ class NewCart extends Component {
             </div>
             <div className="col-sm-3">
                 <InputNumber min={2} max={10} defaultValue={storage.prints} onChange={this.handleChange} />
+                <Button size="default" onClick={this.changePrints}>Update Total</Button>
             </div>
             <div className="col-sm-3">
                 <p className="costContainer"><b><span>$</span>
@@ -328,6 +351,7 @@ class NewCart extends Component {
                 </div>
                 <div className="col-sm-3">
                     <InputNumber min={2} max={10} defaultValue={storage.prints}  onChange={this.handleChange} />
+                    <Button size="default" onClick={this.changePrints}>Update Total</Button>
                 </div>
                 <div className="col-sm-3">
                     <p className="costContainer"><b><span>$</span>
@@ -416,6 +440,7 @@ class NewCart extends Component {
                 </div>
                 <div className="col-sm-3">
                     <InputNumber min={1} max={10} defaultValue={storage.shirts} onChange={this.handleChange} />
+                    <Button size="default" onClick={this.changeShirts}>Update Total</Button>
                 </div>
                 <div className="col-sm-3">
                     <p className="costContainer"><b><span>$</span>{shirtPrice}
