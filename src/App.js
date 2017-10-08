@@ -7,7 +7,6 @@ import ShoppingCart from './ShoppingCart.js';
 import StoreBKShirt from './StoreBKShirt.js';
 import StoreBKPrints from './StoreBKPrints.js';
 import CartExample from './CartExample.js';
-import axios from 'axios';
 import ConfirmPurchase from './ConfirmPurchase.js';
 import NewCart from './NewCart.js';
 import EmptyCart from './EmptyCart.js';

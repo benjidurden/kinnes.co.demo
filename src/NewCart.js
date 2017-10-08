@@ -17,6 +17,9 @@ class NewCart extends Component {
     this.state = {
         value: 0,
         //Different values for shirt and print, retweak this in a sec.
+        printAmount: 0,
+        shirtSize: "",
+        //change these states
         visible: false,
         confirmLoading: false,
         buttonFirstClick: true,
@@ -41,8 +44,6 @@ class NewCart extends Component {
     console.log(this.state.value);
     //That's to get the print and shirt value. Now, to update the price.
     //Do I have to do this method in the render instead? Doesn't make much sense to me to do that. idk.
-    let printPrice = this.state.value * 10;
-    let shirtPrice = this.state.value * 20;
     // subTotalPrice = printPrice + shirtPrice
     //if both the shirt and prints or just the shirt are in the cart - make the shipping $7.
     //else, if only the prints are in the cart, make the shipping $3.
@@ -62,8 +63,16 @@ class NewCart extends Component {
                 buttonFirstClick: false,
             });
         }, 2000);
-        //Set this.state.amount equal to the amount of the subtotal plus shipping to Stripe Checkout
-        //How do I confirm that confirmpurchase got that amount?
+        axios.post('https://kinnesmailer.herokuapp.com/contact/send/', {
+            //Parameters
+          
+        })
+        .then(function (response){
+            console.log(response);
+        })
+        .catch (function (error) {
+            console.log(error);
+        })
     }
 
     handleCancel = (e) => {
@@ -91,9 +100,14 @@ class NewCart extends Component {
         stripe_checkout_init = <ConfirmPurchase amount={this.state.amount} />
         }
         
-        //Price null values
+        //Price null values - finished!
         var shirtPrice = null;
         var printPrice = null;
+
+
+        var subTotalPrice = null;
+        //shippingPrice done
+        var shippingPrice = null;
 
         //setting cart render
         var cartRender = null;
@@ -101,6 +115,11 @@ class NewCart extends Component {
         //Using storage to render the right carts
         if (storage.hasShirtInCart && storage.hasPrintsInCart){
         console.log("You'd like to purchase some shirts and prints");
+        //If the shirt and print are in the cart, set the shippingPrice to $7.
+        printPrice = storage.prints * 10;
+        shirtPrice = storage.shirts * 20;
+        shippingPrice = 7;
+        subTotalPrice = printPrice + shirtPrice;
         cartRender = 
         <div>
         <h1><Link className="homeHead" to = "/"><i>Home</i></Link></h1>
@@ -132,11 +151,11 @@ class NewCart extends Component {
             <div className="col-sm-3">
             <Link to = "/store/support-bk-shirt/"> <p className="itemTitle"><i>Support Brian Kinnes Shirt</i></p></Link>
             {/* Shirt size. */}
-            <p className="itemSize">SMALL</p>
+            <p className="itemSize">{storage.shirtSize}</p>
             <p className="itemRemover" onClick={this.removeItem}>Remove</p>
             </div>
             <div className="col-sm-3">
-                <InputNumber min={2} max={10}  onChange={this.handleChange} />
+                <InputNumber min={1} max={10} defaultValue={storage.shirts} onChange={this.handleChange} />
             </div>
             <div className="col-sm-3">
                 <p className="costContainer"><b><span>$</span>{shirtPrice}
@@ -154,7 +173,7 @@ class NewCart extends Component {
             <p className="itemRemover" onClick={this.removeItem}>Remove</p>
             </div>
             <div className="col-sm-3">
-                <InputNumber min={2} max={10}  onChange={this.handleChange} />
+                <InputNumber min={2} max={10} defaultValue={storage.prints} onChange={this.handleChange} />
             </div>
             <div className="col-sm-3">
                 <p className="costContainer"><b><span>$</span>
@@ -168,10 +187,10 @@ class NewCart extends Component {
         {/* How much spacing is necessary? I think that two 4-sized columns would work, followed by the payment buttons. */}
         <p id="subTotal" className="costContainer">
             <label htmlFor="subTotal">SubTotal:   </label>
-            <b><span>$</span>30</b></p>
+            <b><span>$</span>{subTotalPrice}</b></p>
         <p id="shipping" className="costContainer">
             <label htmlFor="shipping">Shipping: </label>
-            <b><span>$ </span>20</b></p>
+            <b><span>$ </span>{shippingPrice}</b></p>
         </div>
         {/* Cart Info. Pass price to confirmPurchase onclick */}
         <Button size="default" onClick={this.changeCart}>Update Cart</Button>
@@ -195,6 +214,10 @@ class NewCart extends Component {
         }
         else if (storage.hasPrintsInCart){
         console.log("You'd like to only purchase a print");
+        printPrice = storage.prints * 10;
+        //Shipping Cost for prints is $3
+        shippingPrice = 3;
+        subTotalPrice = printPrice;
         cartRender = <div>
         <h1><Link className="homeHead" to = "/"><i>Home</i></Link></h1>
             <FaShoppingCart id="newCartIcon" className = "cartIcon" size={31}/>
@@ -228,7 +251,7 @@ class NewCart extends Component {
                 <p className="itemRemover" onClick={this.removeItem}>Remove</p>
                 </div>
                 <div className="col-sm-3">
-                    <InputNumber min={2} max={10}  onChange={this.handleChange} />
+                    <InputNumber min={2} max={10} defaultValue={storage.prints}  onChange={this.handleChange} />
                 </div>
                 <div className="col-sm-3">
                     <p className="costContainer"><b><span>$</span>
@@ -242,10 +265,10 @@ class NewCart extends Component {
             {/* How much spacing is necessary? I think that two 4-sized columns would work, followed by the payment buttons. */}
             <p id="subTotal" className="costContainer">
                 <label htmlFor="subTotal">SubTotal:   </label>
-                <b><span>$</span>30</b></p>
+                <b><span>$</span>{subTotalPrice}</b></p>
             <p id="shipping" className="costContainer">
                 <label htmlFor="shipping">Shipping: </label>
-                <b><span>$ </span>20</b></p>
+                <b><span>$ </span>{shippingPrice}</b></p>
             </div>
             {/* Cart Info. Pass price to confirmPurchase onclick */}
             <Button size="default" onClick={this.changeCart}>Update Cart</Button>
@@ -269,6 +292,10 @@ class NewCart extends Component {
         }
         else if(storage.hasShirtInCart){
         console.log("You'd like to only purchase a shirt");
+        shirtPrice = storage.shirts * 20;
+        subTotalPrice = shirtPrice;
+        //Set shippingPrice to 7
+        shippingPrice = 7;
         cartRender = <div>
             <h1><Link className="homeHead" to = "/"><i>Home</i></Link></h1>
             <FaShoppingCart id="newCartIcon" className = "cartIcon" size={31}/>
@@ -300,11 +327,11 @@ class NewCart extends Component {
                 <div className="col-sm-3">
                 <Link to = "/store/support-bk-shirt/"> <p className="itemTitle"><i>Support Brian Kinnes Shirt</i></p></Link>
                 {/* Shirt size. */}
-                <p className="itemSize">SMALL</p>
+                <p className="itemSize">{storage.shirtSize}</p>
                 <p className="itemRemover" onClick={this.removeItem}>Remove</p>
                 </div>
                 <div className="col-sm-3">
-                    <InputNumber min={2} max={10}  onChange={this.handleChange} />
+                    <InputNumber min={2} max={10} defaultValue={storage.shirts} onChange={this.handleChange} />
                 </div>
                 <div className="col-sm-3">
                     <p className="costContainer"><b><span>$</span>{shirtPrice}
@@ -316,10 +343,10 @@ class NewCart extends Component {
             {/* How much spacing is necessary? I think that two 4-sized columns would work, followed by the payment buttons. */}
             <p id="subTotal" className="costContainer">
                 <label htmlFor="subTotal">SubTotal:   </label>
-                <b><span>$</span>30</b></p>
+                <b><span>$</span>{subTotalPrice}</b></p>
             <p id="shipping" className="costContainer">
                 <label htmlFor="shipping">Shipping: </label>
-                <b><span>$ </span>20</b></p>
+                <b><span>$ </span>{shippingPrice}</b></p>
             </div>
             {/* Cart Info. Pass price to confirmPurchase onclick */}
             <Button size="default" onClick={this.changeCart}>Update Cart</Button>
