@@ -6,8 +6,8 @@ class Store extends Component {
     render(){
         return (
            <div>
-            <h1><Link to = "/">Home</Link></h1>
-            <h1 className="storeHead"><i><Link to = "/store/">Store</Link></i></h1>
+            <h1><Link className="homeHead" to = "/"><i>Home</i></Link></h1>
+            <h1><i><Link className="storeHead" to = "/store/">Store</Link></i></h1>
             <Link to = "/store/cart/">
             <FaShoppingCart id="cartOnStore" className = "cartIcon" size={31}/>
             </Link>

@@ -10,6 +10,7 @@ import CartExample from './CartExample.js';
 import axios from 'axios';
 import ConfirmPurchase from './ConfirmPurchase.js';
 import NewCart from './NewCart.js';
+import EmptyCart from './EmptyCart.js';
 
 class App extends Component {
   render() {
@@ -30,10 +31,11 @@ class App extends Component {
         <Route exact path = '/store/' component = {Store} />
         <Route exact path = '/store/prints/' component = {StoreBKPrints} />
         <Route exact path = '/store/support-bk-shirt/' component = {StoreBKShirt} />
-        <Route exact path = '/store/cart/' component = {CartExample} />
+        <Route exact path = '/store/cart/' component = {NewCart} />
         <Route exact path = "/store/confirm" component = {ConfirmPurchase} />
         <Route exact path = "/shoppingcart/" component = {ShoppingCart} />
-        <Route exact path = "/newcart/" component={NewCart} />
+        <Route exact path = "/newcart/" component={CartExample} />
+        <Route exact path = '/emptycart/' component={EmptyCart} />
       </Switch>
       </div>
       </Router>

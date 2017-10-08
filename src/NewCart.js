@@ -3,6 +3,8 @@ import {Link} from 'react-router-dom';
 import axios from 'axios';
 import {InputNumber, Button, Modal, Input, Radio, Menu, Dropdown, Icon} from 'antd';
 import ConfirmPurchase from './ConfirmPurchase';
+import storage from './storage';
+import FaShoppingCart from "react-icons/lib/fa/shopping-cart/";
 //After cart image - what comes next?
 
 class NewCart extends Component {
@@ -92,9 +94,28 @@ class NewCart extends Component {
         var shirtPrice = null;
         var printPrice = null;
 
+        //setting cart render
+        var cartRender = null;
+
+        //Using storage to render the right carts
+        if (storage.hasShirtInCart && storage.hasPrintsInCart){
+        console.log("You'd like to purchase some shirts and prints");
+        }
+        else if (storage.hasPrintsInCart){
+        console.log("You'd like to only purchase a print");
+        }
+        else if(storage.hasShirtInCart){
+        console.log("You'd like to only purchase a shirt");
+        }
+        //Default, if the cart is empty pass this 
+        else {
+        console.log("You want to purchase nothing");
+        }
+
         return (
             <div className="container">
-            <h1><Link to = "/">Home</Link></h1>
+            <h1><Link className="homeHead" to = "/"><i>Home</i></Link></h1>
+            <FaShoppingCart id="newCartIcon" className = "cartIcon" size={31}/>
             {/* Cart Icon on right */}
             <h2 id="cartIdentifier"><i>Your Cart</i></h2>
             <hr className="hr--small" />

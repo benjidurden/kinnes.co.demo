@@ -87,37 +87,37 @@ class Home extends Component {
         case "/caroline/":
             filmTitle = <h4 className = "filmTitle">AMINÉ - CAROLINE</h4>;
             filmType = <h4 className = "filmType">MUSIC VIDEO</h4>;
-            currentVideo = <iframe className = "currentVideo" width="730" height="450" src="https://www.youtube.com/embed/3j8ecF8Wt4E?rel=0" frameBorder="0" title="caroline" allowFullScreen></iframe>;
+            currentVideo = <iframe className = "currentVideo" src="https://www.youtube.com/embed/3j8ecF8Wt4E?rel=0" frameBorder="0" title="caroline" allowFullScreen></iframe>;
             productionRole = <h4 className = "productionRole">CREATIVE DIRECTION & WRITING</h4>
             break;
         case "/myneighbor/":
             filmTitle = <h4 className = "filmTitle">BEAGLES - MY NEIGHBOR IS A DRUG DEALER</h4>;
             filmType = <h4 className = "filmType">MUSIC VIDEO</h4>
-            currentVideo = <iframe className = "currentVideo" width="730" height="450" src="https://www.youtube.com/embed/j3PqNsHPvQg?rel=0" frameBorder="0" allowFullScreen title="beagles"></iframe>;
+            currentVideo = <iframe className = "currentVideo" src="https://www.youtube.com/embed/j3PqNsHPvQg?rel=0" frameBorder="0" allowFullScreen title="beagles"></iframe>;
             productionRole = <h4 className = "productionRole">DIRECTOR & DIRECTOR OF PHOTOGRAPHY</h4>
             break;
         case "/wendy/":
             filmTitle = <h4 className = "filmTitle">RICHIE WOODS - WENDY</h4>;
             filmType = <h4 className = "filmType">MUSIC VIDEO</h4>
-            currentVideo = <iframe className = "currentVideo" width="730" height="450" src="https://www.youtube.com/embed/CMNa2xlG3GQ?rel=0" frameBorder="0" allowFullScreen title="wendy"></iframe>;
+            currentVideo = <iframe className = "currentVideo" src="https://www.youtube.com/embed/CMNa2xlG3GQ?rel=0" frameBorder="0" allowFullScreen title="wendy"></iframe>;
             productionRole = <h4 className = "productionRole">DIRECTOR & DIRECTOR OF PHOTOGRAPHY</h4>;
             break;
         case "/american-boyband/":
             filmTitle = <h4 className = "filmTitle">AMERICAN BOYBAND with Kevin Abstract</h4>;
             filmType = <h4 className = "filmType">VICELAND Series</h4>;
-            currentVideo = <iframe className = "currentVideo" width="730" height="450" src="https://www.youtube.com/embed/DBDhBeG1tJY?rel=0" frameBorder="0" title="american-boyband" allowFullScreen></iframe>
+            currentVideo = <iframe className = "currentVideo" src="https://www.youtube.com/embed/DBDhBeG1tJY?rel=0" frameBorder="0" title="american-boyband" allowFullScreen></iframe>
             productionRole = <h4 className = "productionRole">CAST & ADDITIONAL PHOTOGRAPHY</h4>
             break;
         case "/helmet-boy/":
             filmTitle = <h4 className = "filmTitle">HELMET BOY EPISODE 4</h4>;
             filmType = <h4 className = "filmType">MINI-SERIES</h4>;
-            currentVideo = <iframe className = "currentVideo" width="730" height="450" src="https://www.youtube.com/embed/YyPxFav9Tg8?rel=0" frameBorder="0" title="helmet_boy" allowFullScreen></iframe>;
+            currentVideo = <iframe className = "currentVideo" src="https://www.youtube.com/embed/YyPxFav9Tg8?rel=0" frameBorder="0" title="helmet_boy" allowFullScreen></iframe>;
             productionRole = <h4 className = "productionRole">DIRECTOR</h4>
             break;
         case "/beauty-salon/":
             filmTitle = <h4 className = "filmTitle">FOX ACADEMY - BEAUTY SALON</h4>;
             filmType = <h4 className = "filmType">MUSIC VIDEO</h4>;
-            currentVideo = <iframe className = "currentVideo" width="730" height="450" src="https://www.youtube.com/embed/FVW3XfDmcsw?rel=0" frameBorder="0" allowFullScreen title="beauty_salon"></iframe>
+            currentVideo = <iframe className = "currentVideo" src="https://www.youtube.com/embed/FVW3XfDmcsw?rel=0" frameBorder="0" allowFullScreen title="beauty_salon"></iframe>
             productionRole = <h4 className = "productionRole">DIRECTOR & DIRECTOR OF PHOTOGRAPHY</h4>
             break;
         default:
@@ -131,6 +131,7 @@ class Home extends Component {
              <div className = "divider">
                </div>
                 {/* Photography Menu */}
+                <div className="responsiveHead">
                 <Dropdown overlay = {photoMenu}>
                 <a className = "ant-dropdown-link">
                     Photo <Icon type = "down" />
@@ -145,11 +146,12 @@ class Home extends Component {
                 </a>
                 </Dropdown>
             {/* Final Container */}
-            <ul>
+            <ul className="responsiveList">
                <li><a className="link" href="http://blog.briankinn.es">Blog</a></li>
                <li><Link className="storeLink" to="/store/">Store</Link></li>
                <li><a className="link" href="mailto:contact@briankinn.es">Contact</a></li>
             </ul>
+            </div>
             </div>
             {/* Default Kinnes Bio */}
             {kinnesBio}

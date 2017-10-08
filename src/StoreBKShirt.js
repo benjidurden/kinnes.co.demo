@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import {Button, Radio} from 'antd';
+import {Button, Radio, Select} from 'antd';
 import FaShoppingCart from "react-icons/lib/fa/shopping-cart/"
 ;
+import storage from './storage';
 
+const Option = Select.Option;
 const RadioButton = Radio.Button;
 const RadioGroup = Radio.Group;
 
@@ -21,23 +23,24 @@ class StoreBKShirt extends Component {
     this.handleChange = this.handleChange.bind(this);
     }
 
-    handleChange = (e, value) => {
-    this.setState({value: e.target.value});
-    console.log(this.state.value);
+    handleChange = (value) => {
+    this.setState({value: value});
     }
 
     pushShirt = (e, value) => {
     e.preventDefault();
-    console.log("Your shirt size is " + this.state.value);
-    this.props.history.push('/store/cart/');
+    storage.shirtSize = this.state.value;
+    console.log("Your shirt size is " + storage.shirtSize);
+    storage.hasShirtInCart = true;
+    console.log("Do you have shirts in your cart? The answer is " + storage.hasShirtInCart);
     }
 
     render(){
         const size = 'default';
         return (
             <div>
-            <h1><Link to = "/">Home</Link></h1>
-            <h1 className="storeFront"><i><Link to = "/store/">Store</Link></i></h1>
+            <h1><i><Link className="homeHead" to = "/">Home</Link></i></h1>
+            <h1><i><Link className="storeFront" to = "/store/">Store</Link></i></h1>
             <div>
             <Link to = "/store/cart/">
             <FaShoppingCart id="supportBK" className="cartIcon" size={31}/>
@@ -50,12 +53,12 @@ class StoreBKShirt extends Component {
              {/* Size Chart */}
             <form>
             <label htmlFor="sizeSelect">Size: </label>
-            <RadioGroup id="sizeSelect" onChange={this.handleChange} defaultValue="Small">
-              <RadioButton value="Small">Small</RadioButton>
-              <RadioButton value="Medium">Medium</RadioButton>
-              <RadioButton value="Large">Large</RadioButton>
-              <RadioButton value="XL">XL</RadioButton>
-            </RadioGroup>
+            <Select id="sizeSelect" style={{width: 120}} onChange={this.handleChange}>
+                <Option value="Small">Small</Option>
+                <Option value="Medium">Medium</Option>
+                <Option value="Large">Large</Option>
+                <Option value="XL">XL</Option>
+            </Select>
              <Button size={size} onClick={this.pushShirt}>Add To Cart</Button>
              </form>
              </div>

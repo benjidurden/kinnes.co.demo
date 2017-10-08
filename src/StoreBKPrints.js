@@ -3,34 +3,39 @@ import {Link} from 'react-router-dom';
 import {InputNumber, Button} from 'antd';
 import FaShoppingCart from "react-icons/lib/fa/shopping-cart/"
 ;
+import storage from './storage';
 
 class StoreBKPrints extends Component {
     constructor(props){
         super(props);
     this.state = {
         value: 0,
+        //Switch
     };
     this.pushPrints = this.pushPrints.bind(this);
     this.handleChange = this.handleChange.bind(this);
     }
 
     handleChange = (value) => {
-        this.setState({value: value}),
-        console.log(value);
+        this.setState({
+            value: value}),
+        console.log(this.state.value);
     }
 
     pushPrints = (e, value) => {
         e.preventDefault();
-        console.log("Your desired value is " + this.state.value);
-        this.props.history.push('/store/cart/');
+        storage.prints = this.state.value;
+        console.log("You want to purchase " + storage.prints + " prints");
+        storage.hasPrintsInCart = true;
+        console.log("Do you have prints in your cart? The answer is " + storage.hasPrintsInCart);
     }
 
     render(){
         const size = 'default';
         return (
             <div>
-            <h1><Link to = "/">Home</Link></h1>
-            <h1 className="storeFront"><i><Link to = "/store/">Store</Link></i></h1>
+            <h1><Link className = "homeHead" to = "/"><i>Home</i></Link></h1>
+            <h1><i><Link className="storeFront" to = "/store/">Store</Link></i></h1>
             <div>
             <Link to = "/store/cart/">
             <FaShoppingCart id="printCart" className="cartIcon" size={31} />
