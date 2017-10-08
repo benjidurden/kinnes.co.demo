@@ -2,7 +2,7 @@ import {easyStore} from 'react-easy-state';
 import {easyParams} from 'react-easy-params';
 
 const storage = easyStore({
-    prints: 0,
+    prints: 2,
     shirtSize: '',
     shirts: 1,
     hasShirtInCart: false,

@@ -47,7 +47,7 @@ class StoreBKPrints extends Component {
              <p className="itemSpecifics"><i>1 of 1 4x6 prints (1 print of each photo currently exists). Each purchase will get a mix of old and new work. Each photo will have a hand written description and signature on the back.</i></p>
              <form>
              <label>Quantity: </label>
-             <InputNumber min={2} max={10}  onChange={this.handleChange} />
+             <InputNumber min={2} max={10} placeholder="Minimum: 2" onChange={this.handleChange} />
             {/* <select>
               <option>2</option>
               <option>3</option>

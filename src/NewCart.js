@@ -17,7 +17,9 @@ class NewCart extends Component {
     this.state = {
         value: 0,
         //Different values for shirt and print, retweak this in a sec.
-        printAmount: 0,
+        printValue: 0,
+        shirtValue: 0,
+
         shirtSize: "",
         //change these states
         visible: false,
@@ -26,11 +28,47 @@ class NewCart extends Component {
     }
     this.handleChange = this.handleChange.bind(this);
     this.removeItem = this.removeItem.bind(this);
+    this.removePrints = this.removePrints.bind(this);
+    this.removeShirts = this.removeShirts.bind(this);
     this.changeCart = this.changeCart.bind(this);
     }
 
+    //When a single item is in the cart
     removeItem = () => {
-        console.log("Item removed!");
+        if(storage.hasShirtInCart){
+        storage.hasShirtInCart = false;
+        storage.shirts = 0;
+        storage.shirtSize = "";
+        this.props.history.push('/store/cart/');
+        }
+        else if(storage.hasPrintsInCart){
+        storage.hasPrintsInCart = false;
+        storage.prints = 0;
+        this.props.history.push('/store/cart/');
+        }
+        else {
+            console.log("Nothing to remove");
+        }
+    }
+
+    //when both items are in the cart
+    removePrints = () => {
+    if(storage.hasPrintsInCart && storage.hasShirtInCart){
+        console.log("Removing prints!");
+        storage.hasPrintsInCart = false;
+        storage.prints = 0;
+        this.props.history.push('/store/cart/');
+    }
+    }
+
+    removeShirts = () => {
+        if(storage.hasPrintsInCart && storage.hasShirtInCart){
+        console.log("Removing shirts!");
+        storage.hasShirtInCart = false;
+        storage.shirts = 0;
+        storage.shirtSize = "";
+        this.props.history.push('/store/cart/');
+        }
     }
 
     handleChange = (value) => {
@@ -38,16 +76,26 @@ class NewCart extends Component {
         console.log(value);
     }
 
-    changeCart = (value) => {
-    //get the value of all the items. then, update the value of the total, subtotal, and shipping.
-    //Shipping is $3 for prints, $7 for shirts. If the shirt and print are in the car, update the shipping.
-    console.log(this.state.value);
-    //That's to get the print and shirt value. Now, to update the price.
-    //Do I have to do this method in the render instead? Doesn't make much sense to me to do that. idk.
-    // subTotalPrice = printPrice + shirtPrice
-    //if both the shirt and prints or just the shirt are in the cart - make the shipping $7.
-    //else, if only the prints are in the cart, make the shipping $3.
-    //this can be done with localStorage, possibly?
+    changeCart = (e, value, printAmount) => {
+    if(storage.hasShirtInCart){
+    e.preventDefault();
+    storage.shirts = this.state.value;
+    console.log(storage.shirts);
+    this.props.history.push('/store/cart/');
+    }
+    else if (storage.hasPrintsInCart){
+    e.preventDefault();
+    // storage.prints = this.state.value;
+    storage.prints = this.state.value;
+    console.log(storage.prints);
+    this.props.history.push('/store/cart/');
+    }
+    else if (storage.hasPrintsInCart && storage.hasShirtInCart){
+    e.preventDefault();
+    this.props.history.push('/store/cart/');
+    storage.prints = this.state.value;
+    storage.shirts = this.state.value;
+    }
     }
 
     showModal = () => {
@@ -112,6 +160,9 @@ class NewCart extends Component {
         //setting cart render
         var cartRender = null;
 
+        //Conditional to set default quantity and total in render;
+        var setDefault = null;
+
         //Using storage to render the right carts
         if (storage.hasShirtInCart && storage.hasPrintsInCart){
         console.log("You'd like to purchase some shirts and prints");
@@ -120,6 +171,22 @@ class NewCart extends Component {
         shirtPrice = storage.shirts * 20;
         shippingPrice = 7;
         subTotalPrice = printPrice + shirtPrice;
+
+        //DefaultFix
+        if (storage.prints === 0 && printPrice === 0){
+            this.props.history.push('/store/cart/');
+            storage.prints = 2;
+            printPrice = storage.prints * 10;
+            subTotalPrice += printPrice;
+        }
+
+        if (storage.shirts === 0 && shirtPrice === 0){
+            this.props.history.push('/store/cart/');
+            storage.shirts = 1;
+            shirtPrice = storage.shirts * 20;
+            subTotalPrice += shirtPrice;
+        }
+
         cartRender = 
         <div>
         <h1><Link className="homeHead" to = "/"><i>Home</i></Link></h1>
@@ -152,7 +219,7 @@ class NewCart extends Component {
             <Link to = "/store/support-bk-shirt/"> <p className="itemTitle"><i>Support Brian Kinnes Shirt</i></p></Link>
             {/* Shirt size. */}
             <p className="itemSize">{storage.shirtSize}</p>
-            <p className="itemRemover" onClick={this.removeItem}>Remove</p>
+            <p className="itemRemover" onClick={this.removeShirts}>Remove</p>
             </div>
             <div className="col-sm-3">
                 <InputNumber min={1} max={10} defaultValue={storage.shirts} onChange={this.handleChange} />
@@ -170,7 +237,7 @@ class NewCart extends Component {
             </div>
             <div className="col-sm-3">
             <Link to = "/store/prints/"><p className="itemTitle"><i>Photo Prints</i></p></Link>
-            <p className="itemRemover" onClick={this.removeItem}>Remove</p>
+            <p className="itemRemover" onClick={this.removePrints}>Remove</p>
             </div>
             <div className="col-sm-3">
                 <InputNumber min={2} max={10} defaultValue={storage.prints} onChange={this.handleChange} />
@@ -218,6 +285,15 @@ class NewCart extends Component {
         //Shipping Cost for prints is $3
         shippingPrice = 3;
         subTotalPrice = printPrice;
+
+        //Default fix
+
+        if (storage.prints === 0 && printPrice === 0){
+        storage.prints = 2;
+        printPrice = storage.prints * 10;
+        subTotalPrice += printPrice;
+        }
+
         cartRender = <div>
         <h1><Link className="homeHead" to = "/"><i>Home</i></Link></h1>
             <FaShoppingCart id="newCartIcon" className = "cartIcon" size={31}/>
@@ -296,6 +372,14 @@ class NewCart extends Component {
         subTotalPrice = shirtPrice;
         //Set shippingPrice to 7
         shippingPrice = 7;
+
+        //Default Fix
+        if (storage.shirts === 0 && shirtPrice === 0){
+            storage.shirts = 1;
+            shirtPrice = storage.shirts * 20;
+            subTotalPrice += shirtPrice;
+        }
+
         cartRender = <div>
             <h1><Link className="homeHead" to = "/"><i>Home</i></Link></h1>
             <FaShoppingCart id="newCartIcon" className = "cartIcon" size={31}/>
@@ -331,7 +415,7 @@ class NewCart extends Component {
                 <p className="itemRemover" onClick={this.removeItem}>Remove</p>
                 </div>
                 <div className="col-sm-3">
-                    <InputNumber min={2} max={10} defaultValue={storage.shirts} onChange={this.handleChange} />
+                    <InputNumber min={1} max={10} defaultValue={storage.shirts} onChange={this.handleChange} />
                 </div>
                 <div className="col-sm-3">
                     <p className="costContainer"><b><span>$</span>{shirtPrice}

@@ -53,7 +53,7 @@ class StoreBKShirt extends Component {
              {/* Size Chart */}
             <form>
             <label htmlFor="sizeSelect">Size: </label>
-            <Select id="sizeSelect" style={{width: 120}} onChange={this.handleChange}>
+            <Select id="sizeSelect" placeholder="Please Select An Option" style={{width: 120}} onChange={this.handleChange}>
                 <Option value="Small">Small</Option>
                 <Option value="Medium">Medium</Option>
                 <Option value="Large">Large</Option>
