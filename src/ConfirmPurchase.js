@@ -1,7 +1,18 @@
 import React, {Component} from 'react';
+import axios from 'axios';
 import StripeCheckout from 'react-stripe-checkout';
 import {Button} from 'antd';
 import storage from './storage';
+
+//need to import PAYMENT_SERVER_URL
+
+const successPayment = data => {
+    alert('Payment Successful');
+}
+
+const errorPayment = data => {
+    alert('Payment error');
+}
 
 class ConfirmPurchase extends Component {
     

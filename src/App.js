@@ -10,6 +10,7 @@ import CartExample from './CartExample.js';
 import ConfirmPurchase from './ConfirmPurchase.js';
 import NewCart from './NewCart.js';
 import EmptyCart from './EmptyCart.js';
+import CheckoutServe from './CheckoutServe.js';
 
 class App extends Component {
   render() {
@@ -35,6 +36,7 @@ class App extends Component {
         <Route exact path = "/shoppingcart/" component = {ShoppingCart} />
         <Route exact path = "/newcart/" component={CartExample} />
         <Route exact path = '/emptycart/' component={EmptyCart} />
+        <Route exact path = "/checkoutserve/" component={CheckoutServe} />
       </Switch>
       </div>
       </Router>
