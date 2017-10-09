@@ -132,7 +132,7 @@ class Home extends Component {
                </div>
                 {/* Photography Menu */}
                 <div className="responsiveHead">
-                <Dropdown overlay = {photoMenu}>
+                <Dropdown className="responsiveHead" overlay = {photoMenu}>
                 <a className = "ant-dropdown-link">
                     Photo <Icon type = "down" />
                 </a>
@@ -147,9 +147,9 @@ class Home extends Component {
                 </Dropdown>
             {/* Final Container */}
             <ul className="responsiveList">
-               <li><a className="link" href="http://blog.briankinn.es">Blog</a></li>
-               <li><Link className="storeLink" to="/store/">Store</Link></li>
-               <li><a className="link" href="mailto:contact@briankinn.es">Contact</a></li>
+               <li><a className="link responsiveOther" href="http://blog.briankinn.es">Blog</a></li>
+               <li><Link className="storeLink responsiveOther" to="/store/">Store</Link></li>
+               <li><a className="link responsiveOther" href="mailto:contact@briankinn.es">Contact</a></li>
             </ul>
             </div>
             </div>

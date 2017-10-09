@@ -35,7 +35,7 @@ class StoreBKPrints extends Component {
         return (
             <div>
             <h1><Link className = "homeHead" to = "/"><i>Home</i></Link></h1>
-            <h1><i><Link className="storeFront" to = "/store/">Store</Link></i></h1>
+            <h1 className="storeFront"><i><Link className="storeFront" to = "/store/">Store</Link></i></h1>
             <div>
             <Link to = "/store/cart/">
             <FaShoppingCart id="printCart" className="cartIcon" size={31} />

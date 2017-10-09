@@ -40,7 +40,7 @@ class StoreBKShirt extends Component {
         return (
             <div>
             <h1><i><Link className="homeHead" to = "/">Home</Link></i></h1>
-            <h1><i><Link className="storeFront" to = "/store/">Store</Link></i></h1>
+            <h1 className="storeFront"><i><Link className="storeFront" to = "/store/">Store</Link></i></h1>
             <div>
             <Link to = "/store/cart/">
             <FaShoppingCart id="supportBK" className="cartIcon" size={31}/>

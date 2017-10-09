@@ -1,0 +1,295 @@
+/* This will hold all unused media queries, and/or stuff that I mess around with. */
+
+/* Media Queries */
+/* iPhone 6 */
+@media only screen and (min-width: 375px) and (max-width: 667px){
+    .photoTitle, .photoDescription {
+        left: 0px;
+        text-align: center;
+        font-weight: 300;
+        font-size: 12px;
+    }
+    .responsiveHead, .responsiveList {
+        position: relative;
+        display: block;
+        top: 450px;
+        font-size: 24px;
+    }
+
+    .filmTitle, .filmType, .productionRole {
+    left: 0px;
+    text-align: center;
+    font-weight: 300;
+    font-size: 12px;
+    }
+    .currentVideo {
+        width: 320px;
+        height: 440px;
+    }
+    .prints {
+        width: 60%;
+        height: 60%;
+    }
+
+    .shirt-pic {
+        width: 60%;
+        height: 60%;
+        position: relative;
+        display: block;
+        top: 150px;
+        right:200px;
+    }
+
+    .main {
+        max-width: 100%;
+        height: none;
+    }
+
+
+    .printFull {
+        display: block;
+        position: relative;
+        top: 200px;
+    }
+
+
+    .itemInfo {
+        position: absolute;
+        display: inline-block;
+        /* bottom: 300px; */
+        /* right: 300px; */
+        top: 250px;
+        color: black;
+        font-size: 12px;
+    }
+
+}
+
+/* iPhone 6Plus and 7 Plus */
+@media only screen and (min-width: 414px) and (max-width: 736px){
+   .photoTitle, .photoDescription {
+        left: 0px;
+        text-align: center;
+        font-weight: 300;
+        font-size: 12px;
+    } 
+    .responsiveHead, .responsiveList {
+        position: relative;
+        display: block;
+        top: 450px;
+        /* left: 400px; */
+        font-size: 24px;
+        padding: 30px;
+    }
+
+    .filmTitle, .filmType, .productionRole {
+    left: 0px;
+    text-align: center;
+    font-weight: 300;
+    font-size: 12px;
+    }
+
+    .currentVideo {
+        width: 320px;
+        height: 440px;
+    }
+
+    .prints {
+        width: 60%;
+        height: 60%;
+    }
+
+    .shirt-pic {
+        width: 60%;
+        height: 60%;
+        position: relative;
+        display: block;
+        top: 150px;
+        right:200px;
+    }
+
+    .main {
+        max-width: 100%;
+        height: none;
+    }
+
+    .printFull {
+        display: block;
+        position: relative;
+        top: 200px;
+    }
+
+    .itemInfo {
+        position: absolute;
+        display: inline-block;
+        /* bottom: 300px; */
+        /* right: 300px; */
+        top: 250px;
+        color: black;
+        font-size: 12px;
+    }
+
+}
+
+/* iPhone 5 and 5s */
+@media only screen and (min-width: 320px) and (max-width: 568px){
+
+    /* MOST RECENT CSS */
+    /* Subtitle */
+    .kinnesBio {
+        bottom: 370px;
+        font-size: 14px;
+    }
+    /* SubCategories like Photo and Film */
+    .responsiveOther {
+        position: relative;
+        display: block;
+
+    }
+    .ant-dropdown-link, .ant-dropdown-trigger {
+        position: relative;
+        display: block;
+        color: #1c1d1d;
+        bottom: 250px;
+        
+    }
+
+    /* Blog, store, and Contact */
+    .responsiveOther {
+        position: relative;
+        display: block;
+        color: #1c1d1d;
+        bottom: 300px;
+    }
+
+
+
+     .photoTitle, .photoDescription {
+        left: 0px;
+        text-align: center;
+        font-weight: 300;
+        font-size: 12px;
+    } 
+    .responsiveHead, .responsiveList {
+        position: relative;
+        display: block;
+        top: 450px;
+        left: 400px;
+        font-size: 24px;
+        padding: 30px;
+    }
+
+    .filmTitle, .filmType, .productionRole {
+    left: 0px;
+    text-align: center;
+    font-weight: 300;
+    font-size: 12px;
+    }
+
+    .currentVideo {
+        width: 320px;
+        height: 440px;
+    }
+
+    .prints {
+        width: 60%;
+        height: 60%;
+    }
+
+    .shirt-pic {
+        width: 60%;
+        height: 60%;
+        position: relative;
+        display: block;
+        top: 150px;
+        right:200px;
+    }
+
+    .main {
+        max-width: 100%;
+        height: none;
+    }
+
+    .printFull {
+        display: block;
+        position: relative;
+        top: 200px;
+    }
+
+    .itemInfo {
+            position: absolute;
+            display: inline-block;
+            /* bottom: 300px; */
+            /* right: 300px; */
+            top: 250px;
+            color: black;
+            font-size: 12px;
+        }
+}
+
+/* iPhone 2G-4s */
+@media only screen and (min-width: 320px) and (max-width: 480px){
+
+     .photoTitle, .photoDescription {
+        left:0px;
+        text-align: center;
+        font-weight: 300;
+        font-size: 12px;
+    }
+    .responsiveHead, .responsiveList {
+        position: relative;
+        display: block;
+        top: 450px;
+        /* left: 400px; */
+        font-size: 24px;
+        padding: 30px;
+    }
+
+    .filmTitle, .filmType, .productionRole {
+    left: 0px;
+    text-align: center;
+    font-weight: 300;
+    font-size: 12px;
+    }
+
+    .currentVideo {
+        width: 320px;
+        height: 440px;
+    }
+
+    .prints {
+        width: 60%;
+        height: 60%;
+    }
+
+    .shirt-pic {
+        width: 60%;
+        height: 60%;
+        position: relative;
+        display: block;
+        top: 150px;
+        right:200px;
+    }
+
+    .main {
+        max-width: 100%;
+        height: none;
+    }
+
+    .printFull {
+        display: block;
+        position: relative;
+        top: 200px;
+    }
+
+    .itemInfo {
+        position: absolute;
+        display: inline-block;
+        /* bottom: 300px; */
+        /* right: 300px; */
+        top: 250px;
+        color: black;
+        font-size: 12px;
+    }
+
+}

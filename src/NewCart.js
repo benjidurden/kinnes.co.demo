@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
-import {InputNumber, Button, Modal, Input, Radio, Menu, Dropdown, Icon} from 'antd';
+import {InputNumber, Button, Modal, Input, Radio, Menu, Dropdown, Icon, Alert} from 'antd';
 import ConfirmPurchase from './ConfirmPurchase';
 import storage from './storage';
 import FaShoppingCart from "react-icons/lib/fa/shopping-cart/";
@@ -19,10 +19,11 @@ class NewCart extends Component {
         //Different values for shirt and print, retweak this in a sec.
         printValue: 0,
         shirtValue: 0,
-
+        name: "Marcus",
         shirtSize: "",
         //change these states
         visible: false,
+        visible2: false,
         confirmLoading: false,
         buttonFirstClick: true,
     }
@@ -33,6 +34,7 @@ class NewCart extends Component {
     this.changeShirts = this.changeShirts.bind(this);
     this.removeShirts = this.removeShirts.bind(this);
     this.changeCart = this.changeCart.bind(this);
+    this.finishUpdate = this.finishUpdate.bind(this);
     }
 
     //When a single item is in the cart
@@ -78,41 +80,58 @@ class NewCart extends Component {
         console.log(value);
     }
 
-    changeCart = (e, value, printAmount) => {
-    if(storage.hasShirtInCart){
-    e.preventDefault();
-    storage.shirts = this.state.value;
-    console.log(storage.shirts);
-    this.props.history.push('/store/cart/');
-    }
-    else if (storage.hasPrintsInCart){
-    e.preventDefault();
+    // changeCart = (e, value, printAmount) => {
+    // if(storage.hasShirtInCart){
+    // e.preventDefault();
+    // storage.shirts = this.state.value;
+    // console.log(storage.shirts);
+    // this.props.history.push('/store/cart/');
+    // }
+    // else if (storage.hasPrintsInCart){
+    // e.preventDefault();
+    // // storage.prints = this.state.value;
     // storage.prints = this.state.value;
-    storage.prints = this.state.value;
-    console.log(storage.prints);
-    this.props.history.push('/store/cart/');
-    }
-    else if (storage.hasPrintsInCart && storage.hasShirtInCart){
-    e.preventDefault();
-    this.props.history.push('/store/cart/');
-    storage.prints = this.state.value;
-    storage.shirts = this.state.value;
-    }
+    // console.log(storage.prints);
+    // this.props.history.push('/store/cart/');
+    // }
+    // else if (storage.hasPrintsInCart && storage.hasShirtInCart){
+    // e.preventDefault();
+    // this.props.history.push('/store/cart/');
+    // storage.prints = this.state.value;
+    // storage.shirts = this.state.value;
+    // }
+    // }
+
+    changeCart = () => {
+        if(storage.hasPrintsInCart){
+            this.changePrints();
+            console.log("Print changeCart worked!");
+        }
+        else if(storage.hasShirtInCart){
+            this.changeShirts();
+            console.log("Shirt changeCart worked!");
+        }
+        else if (storage.hasPrintsInCart && storage.hasShirtInCart){
+        this.changePrints();
+        console.log("Push 1");
+        }
     }
 
-    changePrints = (e, value) => {
+    finishUpdate = () => {
+        this.changeShirts();
+        console.log("Push 2");
+    }
+
+    changePrints = (value) => {
         if (storage.hasPrintsInCart){
-            e.preventDefault();
-            // storage.prints = this.state.value;
             storage.prints = this.state.value;
             console.log(storage.prints);
             this.props.history.push('/store/cart/');
         }
     }
 
-    changeShirts = (e, value) => {
+    changeShirts = (value) => {
         if(storage.hasShirtInCart){
-         e.preventDefault();
          storage.shirts = this.state.value;
          console.log(storage.shirts);
          this.props.history.push('/store/cart/');
@@ -123,7 +142,16 @@ class NewCart extends Component {
         this.setState({visible: true});
     }
 
+    showUpdateModal = () => {
+        this.setState({visible: true});
+    }
+
     handleOk = (e, key) => {
+        e.preventDefault();
+        this.state.shirtSize = storage.shirtSize;
+        let printCheck = storage.hasPrintsInCart;
+        let shirtCheck = storage.hasShirtInCart
+        console.log("Surprise! Your shirt size is " + storage.shirtSize);
         this.setState({confirmLoading: true});
         setTimeout(() => {
             this.setState({
@@ -132,17 +160,71 @@ class NewCart extends Component {
                 buttonFirstClick: false,
             });
         }, 2000);
+
+        if(printCheck){
         axios.post('https://kinnesmailer.herokuapp.com/contact/send/', {
             //Parameters
-          
+          name: this.state.name,
+          printAmount: storage.prints,
+          shirtAmount: 0,
+          shirtSize: "N/A"
         })
+        //   printAmount: storage.prints,
+        // THIS WORKS!  shirtAmount: this.state.value,
+        //   shirtSize: storage.shirtSize,
         .then(function (response){
             console.log(response);
+            console.log("Axios print!");
         })
         .catch (function (error) {
             console.log(error);
         })
     }
+
+    if(shirtCheck){
+        axios.post('https://kinnesmailer.herokuapp.com/contact/send/', {
+            //Parameters
+          name: this.state.name,
+          printAmount: 0,
+          shirtAmount: this.state.value,
+          shirtSize: "N/A",
+        })
+        //   printAmount: storage.prints,
+        // THIS WORKS!  shirtAmount: this.state.value,
+        //   shirtSize: storage.shirtSize,
+        .then(function (response){
+            console.log(response);
+            console.log("Axios shirt!");
+        })
+        .catch (function (error) {
+            console.log(error);
+        })
+    }
+
+       if(printCheck && shirtCheck){
+        axios.post('https://kinnesmailer.herokuapp.com/contact/send/', {
+            //Parameters
+          name: this.state.name,
+          printAmount: storage.prints,
+          shirtAmount: this.state.value,
+          shirtSize: "N/A"
+        })
+        //   printAmount: storage.prints,
+        // THIS WORKS!  shirtAmount: this.state.value,
+        //   shirtSize: storage.shirtSize,
+        .then(function (response){
+            console.log(response);
+            console.log("axios both!");
+        })
+        .catch (function (error) {
+            console.log(error);
+        })
+    }
+
+      //End of listener
+      }
+
+
 
     handleCancel = (e) => {
         console.log(e);
@@ -275,19 +357,20 @@ class NewCart extends Component {
         <div className="row borderRow">
         {/* an HR then a subtotal, shipping, update cart and checkout */}
         {/* How much spacing is necessary? I think that two 4-sized columns would work, followed by the payment buttons. */}
-        <p id="subTotal" className="costContainer">
+        <p id="subTotal" className="costContainer totals">
             <label htmlFor="subTotal">SubTotal:   </label>
             <b><span>$</span>{subTotalPrice}</b></p>
-        <p id="shipping" className="costContainer">
+        <p id="shipping" className="costContainer totals">
             <label htmlFor="shipping">Shipping: </label>
             <b><span>$ </span>{shippingPrice}</b></p>
         </div>
         {/* Cart Info. Pass price to confirmPurchase onclick */}
-        <Button size="default" onClick={this.changeCart}>Update Cart</Button>
+        {/* <Button size="default" onClick={this.changeCart}>Update Cart</Button> */}
         <Button className={this.state.buttonFirstClick ? "cartButtons": "hideModal"} size={this.state.size} onClick={this.showModal}>
             Checkout
             </Button>
             {stripe_checkout_init}
+            {/* Modal for both */}
            <Modal
             title="Sure you're not a robot?"
             visible={this.state.visible}
@@ -298,8 +381,17 @@ class NewCart extends Component {
             cancelText="Cancel"
              >
         <Input placeholder="Enter your full name" name={this.state.fullName} />
-        <p>Just a failsafe! Hit the Checkout button again after you type this in.</p>
+           <br />
+        <p>Just a failsafe! Please put in your full name, followed by your shirt size after typing this, like
+            <br />
+            ex. Nolan North XL
+            <br />
+            If you don't include your full name and size , your order won't be processed.
+            <br />
+            After this is done - you may hit the checkout button again and finish your order!
+        </p>
         </Modal>
+            {/* Update Modal */}
         </div>
         }
         else if (storage.hasPrintsInCart){
@@ -363,15 +455,15 @@ class NewCart extends Component {
             <div className="row borderRow">
             {/* an HR then a subtotal, shipping, update cart and checkout */}
             {/* How much spacing is necessary? I think that two 4-sized columns would work, followed by the payment buttons. */}
-            <p id="subTotal" className="costContainer">
+            <p id="subTotal" className="costContainer totals">
                 <label htmlFor="subTotal">SubTotal:   </label>
                 <b><span>$</span>{subTotalPrice}</b></p>
-            <p id="shipping" className="costContainer">
+            <p id="shipping" className="costContainer totals">
                 <label htmlFor="shipping">Shipping: </label>
                 <b><span>$ </span>{shippingPrice}</b></p>
             </div>
             {/* Cart Info. Pass price to confirmPurchase onclick */}
-            <Button size="default" onClick={this.changeCart}>Update Cart</Button>
+            {/* <Button size="default" onClick={this.changeCart}>Update Cart</Button> */}
             <Button className={this.state.buttonFirstClick ? "cartButtons": "hideModal"} size={this.state.size} onClick={this.showModal}>
                 Checkout
                 </Button>
@@ -386,7 +478,7 @@ class NewCart extends Component {
                 cancelText="Cancel"
                  >
             <Input placeholder="Enter your full name" name={this.state.fullName} />
-            <p>Just a failsafe! Hit the Checkout button again after you type this in.</p>
+            <p>Just a failsafe! Hit the Checkout button again after you type your name in.</p>
             </Modal>
         </div>
         }
@@ -450,15 +542,15 @@ class NewCart extends Component {
             <div className="row borderRow">
             {/* an HR then a subtotal, shipping, update cart and checkout */}
             {/* How much spacing is necessary? I think that two 4-sized columns would work, followed by the payment buttons. */}
-            <p id="subTotal" className="costContainer">
+            <p id="subTotal" className="costContainer totals">
                 <label htmlFor="subTotal">SubTotal:   </label>
                 <b><span>$</span>{subTotalPrice}</b></p>
-            <p id="shipping" className="costContainer">
+            <p id="shipping" className="costContainer totals">
                 <label htmlFor="shipping">Shipping: </label>
                 <b><span>$ </span>{shippingPrice}</b></p>
             </div>
             {/* Cart Info. Pass price to confirmPurchase onclick */}
-            <Button size="default" onClick={this.changeCart}>Update Cart</Button>
+            {/* <Button size="default" onClick={this.changeCart}>Update Cart</Button> */}
             <Button className={this.state.buttonFirstClick ? "cartButtons": "hideModal"} size={this.state.size} onClick={this.showModal}>
                 Checkout
                 </Button>
@@ -473,7 +565,16 @@ class NewCart extends Component {
                 cancelText="Cancel"
                  >
             <Input placeholder="Enter your full name" name={this.state.fullName} />
-            <p>Just a failsafe! Hit the Checkout button again after you type this in.</p>
+            {/* Modal Shirt Single */}
+            <br />
+        <p>Just a failsafe! Please put in your full name, followed by your shirt size after typing this, like
+            <br />
+            ex. Nolan North XL
+            <br />
+            If you don't include your full name and size , your order won't be processed.
+            <br />
+            After this is done - you may hit the checkout button again and finish your order!
+        </p>
             </Modal>
         </div>
         }

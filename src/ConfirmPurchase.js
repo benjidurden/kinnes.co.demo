@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import StripeCheckout from 'react-stripe-checkout';
 import {Button} from 'antd';
+import storage from './storage';
 
 class ConfirmPurchase extends Component {
     
@@ -17,15 +18,35 @@ class ConfirmPurchase extends Component {
     
         //pass the amount property to the axios
         render(){
+
+            var priceOfPrints = null;
+            var priceOfShirts = null;
+            var totalCost = null;
+            var shipping = null;
+
+            if(storage.hasShirtInCart === true){
+                shipping = 7;
+            }
+            else if (storage.hasPrintsInCart === true){
+                shipping = 3;
+            }
+            else if (storage.hasPrintsInCart === true && storage.hasShirtInCart === true){
+                shipping = 7;
+            }
+
+            var priceOfPrints = storage.prints * 10;
+            var priceOfShirts = storage.shirts * 20;
+            var totalCost = priceOfPrints + priceOfShirts + shipping;
+            console.log("Total cost is " + totalCost);
             return (
                 <StripeCheckout
                     token = {this.onToken}
-                    stripeKey="pk_live_SQT4BK0fXRFXZLRa51oUBXpO"
+                    stripeKey="pk_test_W8ELp0NoVyVpoSHKCs81PaxY"
                     name = "Brian Kinnes"
                     description = "Your Purchase"
                     panelLabel="Pay Brian"
                     //Set the amount based on the amount in the cart
-                    amount={1}
+                    amount={totalCost}
                     currency="USD"
                     shippingAddress
                     billingAddress

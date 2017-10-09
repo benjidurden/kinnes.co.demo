@@ -7,7 +7,7 @@ class Store extends Component {
         return (
            <div>
             <h1><Link className="homeHead" to = "/"><i>Home</i></Link></h1>
-            <h1><i><Link className="storeHead" to = "/store/">Store</Link></i></h1>
+            <h1 className="storeHead"><i><Link className="storeHead" to = "/store/">Store</Link></i></h1>
             <Link to = "/store/cart/">
             <FaShoppingCart id="cartOnStore" className = "cartIcon" size={31}/>
             </Link>

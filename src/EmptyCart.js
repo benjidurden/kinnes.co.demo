@@ -11,7 +11,7 @@ class EmptyCart extends Component {
             <FaShoppingCart id="emptyCartIcon" className = "cartIcon" size={31}/>
             <h2 id="cartIdentifier"><i>Your Cart</i></h2>
             <hr className="hr--small" />
-            <p>Your cart is currently empty.
+            <p className="fixCart">Your cart is currently empty.
                 <br  />
             Continue browing <Link to = "/store/">here.</Link></p>
             </div>
