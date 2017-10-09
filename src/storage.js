@@ -7,6 +7,7 @@ const storage = easyStore({
     shirts: 1,
     hasShirtInCart: false,
     hasPrintsInCart: false,
+    name: "",
 })
 
 easyParams(storage, {

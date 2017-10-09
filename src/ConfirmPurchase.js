@@ -36,17 +36,17 @@ class ConfirmPurchase extends Component {
 
             var priceOfPrints = storage.prints * 10;
             var priceOfShirts = storage.shirts * 20;
-            var totalCost = priceOfPrints + priceOfShirts + shipping;
+            var totalCost = (priceOfPrints + priceOfShirts + shipping) * 100;
             console.log("Total cost is " + totalCost);
             return (
                 <StripeCheckout
                     token = {this.onToken}
-                    stripeKey="pk_test_W8ELp0NoVyVpoSHKCs81PaxY"
+                    stripeKey="pk_live_SQT4BK0fXRFXZLRa51oUBXpO"
                     name = "Brian Kinnes"
                     description = "Your Purchase"
                     panelLabel="Pay Brian"
                     //Set the amount based on the amount in the cart
-                    amount={totalCost}
+                    amount={1}
                     currency="USD"
                     shippingAddress
                     billingAddress

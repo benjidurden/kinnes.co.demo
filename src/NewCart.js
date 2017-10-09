@@ -19,7 +19,7 @@ class NewCart extends Component {
         //Different values for shirt and print, retweak this in a sec.
         printValue: 0,
         shirtValue: 0,
-        name: "Marcus",
+        name: "",
         shirtSize: "",
         //change these states
         visible: false,
@@ -146,13 +146,18 @@ class NewCart extends Component {
         this.setState({visible: true});
     }
 
-    handleOk = (e, key) => {
+    handleOk = (e, key, name) => {
         e.preventDefault();
         this.state.shirtSize = storage.shirtSize;
         let printCheck = storage.hasPrintsInCart;
         let shirtCheck = storage.hasShirtInCart
         console.log("Surprise! Your shirt size is " + storage.shirtSize);
-        this.setState({confirmLoading: true});
+        var userName = this.refs.userName;
+        var userNameValue = userName.value;
+        storage.name = userNameValue;
+        this.setState({confirmLoading: true,
+            name: name,
+        });
         setTimeout(() => {
             this.setState({
                 visible: false,
@@ -164,7 +169,7 @@ class NewCart extends Component {
         if(printCheck){
         axios.post('https://kinnesmailer.herokuapp.com/contact/send/', {
             //Parameters
-          name: this.state.name,
+          name: storage.name,
           printAmount: storage.prints,
           shirtAmount: 0,
           shirtSize: "N/A"
@@ -184,7 +189,7 @@ class NewCart extends Component {
     if(shirtCheck){
         axios.post('https://kinnesmailer.herokuapp.com/contact/send/', {
             //Parameters
-          name: this.state.name,
+          name: storage.name,
           printAmount: 0,
           shirtAmount: this.state.value,
           shirtSize: "N/A",
@@ -204,7 +209,7 @@ class NewCart extends Component {
        if(printCheck && shirtCheck){
         axios.post('https://kinnesmailer.herokuapp.com/contact/send/', {
             //Parameters
-          name: this.state.name,
+          name: storage.name,
           printAmount: storage.prints,
           shirtAmount: this.state.value,
           shirtSize: "N/A"
@@ -380,7 +385,7 @@ class NewCart extends Component {
             okText="Okay"
             cancelText="Cancel"
              >
-        <Input placeholder="Enter your full name" name={this.state.fullName} />
+        <Input placeholder="Enter your full name" name={this.state.name} ref="userName" />
            <br />
         <p>Just a failsafe! Please put in your full name, followed by your shirt size after typing this, like
             <br />
@@ -477,7 +482,7 @@ class NewCart extends Component {
                 okText="Okay"
                 cancelText="Cancel"
                  >
-            <Input placeholder="Enter your full name" name={this.state.fullName} />
+            <Input placeholder="Enter your full name" name={this.state.name} ref="userName" />
             <p>Just a failsafe! Hit the Checkout button again after you type your name in.</p>
             </Modal>
         </div>
@@ -564,7 +569,7 @@ class NewCart extends Component {
                 okText="Okay"
                 cancelText="Cancel"
                  >
-            <Input placeholder="Enter your full name" name={this.state.fullName} />
+            <Input placeholder="Enter your full name" name={this.state.name} ref="userName" />
             {/* Modal Shirt Single */}
             <br />
         <p>Just a failsafe! Please put in your full name, followed by your shirt size after typing this, like
