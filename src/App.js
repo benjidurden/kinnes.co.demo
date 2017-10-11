@@ -11,6 +11,7 @@ import ConfirmPurchase from './ConfirmPurchase.js';
 import NewCart from './NewCart.js';
 import EmptyCart from './EmptyCart.js';
 import CheckoutServe from './CheckoutServe.js';
+import UnderConstruction from './UnderConstruction.js';
 
 class App extends Component {
   render() {
@@ -18,7 +19,8 @@ class App extends Component {
       <Router>
       <div>
       <Switch>
-        <Route exact path = '/' component = {Home} />
+        {/* Swap Construction for Home */}
+        <Route exact path = '/' component = {UnderConstruction} />
         {/* This method maps through an array of paths, assigning each endpoint to the same component */}
         {/*RedMercedes and Heebiejeebies will render the photo component. The rest will render the video component.*/}
         {/* Assign a key later on */}
